@@ -1,5 +1,0 @@
-/doc/
-/build/
-/dist/
-*__pycache__*
-bindings/javascript/libmetawear-path.js
