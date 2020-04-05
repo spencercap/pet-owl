@@ -200,11 +200,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts-Swift-iOS/BoltsSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD-iOS/MBProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MetaWear-iOS/MetaWear.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftWebSocket-iOS/SwiftWebSocket.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts-Swift-iOS/BoltsSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD-iOS/MBProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MetaWear-iOS/MetaWear.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftWebSocket-iOS/SwiftWebSocket.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

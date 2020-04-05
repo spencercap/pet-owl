@@ -5,6 +5,7 @@ abstract_target 'Starter' do
 #  pod 'MetaWear', :subspecs => ['Core', 'AsyncUtils', 'UI'], :path => '../'
   ## COCOAPODS
   pod 'MetaWear', :subspecs => ['Core', 'AsyncUtils', 'UI']
+  pod 'SwiftWebSocket'
 
   target 'iOS' do
     platform :ios, '10.0'

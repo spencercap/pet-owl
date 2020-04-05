@@ -9,6 +9,7 @@
 import Cocoa
 import MetaWear
 import MetaWearCpp
+import SwiftWebSocket
 
 class ScanViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     @IBOutlet weak var tableView: NSTableView!
@@ -35,11 +36,27 @@ class ScanViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     }
     
     
+    let ws = WebSocket()
+    func sendQuat(_ quaternion: MblMwQuaternion) {
+        // FORMAT: x, y, z, w
+        ws.send("quat/" + String(quaternion.x) + "/" + String(quaternion.y) + "/" + String(quaternion.z) + "/" + String(quaternion.w) );
+    }
+    
     
     // ~~~ VOS code ~~~
     
     @IBAction func streamStart(_ sender: Any) {
         print("stream start")
+        
+        
+        // open websocket
+        ws.open("ws://192.168.1.16:9000")
+        // listen for events
+        ws.event.open = {
+            print("websocket opened")
+            self.ws.send("/init/new client at " + NSDate().description)
+        }
+        
         
         // TODO figure out how get correct index of clicked row, but for now assume theres only 1 device
         // let index = tableView.clickedRow
@@ -64,8 +81,10 @@ class ScanViewController: NSViewController, NSTableViewDelegate, NSTableViewData
             // print(signal)
 
             mbl_mw_datasignal_subscribe(signal, bridge(obj: self)) { (context, data) in
+                let _self: ScanViewController = bridge(ptr: context!)
                 let quaternion: MblMwQuaternion = data!.pointee.valueAs()
-                print(quaternion)
+                // print(quaternion)
+                _self.sendQuat(quaternion)
             }
             
             mbl_mw_sensor_fusion_enable_data(board, MBL_MW_SENSOR_FUSION_DATA_QUATERNION);
@@ -79,6 +98,8 @@ class ScanViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     @IBAction func streamStop(_ sender: Any) {
         print("stream stop")
+        
+        ws.close()  
         
         let index = 0
         

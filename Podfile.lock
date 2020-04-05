@@ -8,12 +8,14 @@ PODS:
   - MetaWear/UI (3.4.2):
     - MetaWear/AsyncUtils
     - MetaWear/Core
+  - SwiftWebSocket (2.7.0)
 
 DEPENDENCIES:
   - MBProgressHUD
   - MetaWear/AsyncUtils
   - MetaWear/Core
   - MetaWear/UI
+  - SwiftWebSocket
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -21,12 +23,14 @@ SPEC REPOS:
   trunk:
     - Bolts-Swift
     - MetaWear
+    - SwiftWebSocket
 
 SPEC CHECKSUMS:
   Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MetaWear: feea1bd2c9bad6e38cdd2c2de826cbcb577d1aa3
+  SwiftWebSocket: 612c9729fd503cb6b0b8b45390c788686dac306f
 
-PODFILE CHECKSUM: cf528361f4a865b002d648d0376408ecf25e269d
+PODFILE CHECKSUM: bf4b0c39c084d12c37eb493b57fc1f78cfaa4d04
 
 COCOAPODS: 1.9.1
